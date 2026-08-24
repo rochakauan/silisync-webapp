@@ -1,6 +1,7 @@
 ﻿using api.silisync.Extensions;
 using application.silisync.Interfaces.Application;
 using domain.silisync.Repositories;
+using domain.silisync.Requests.Users;
 using Microsoft.AspNetCore.Mvc;
 
 namespace api.silisync.Controllers;
@@ -11,10 +12,18 @@ public sealed class Users(IUserApplication userApplication) : ControllerBase
 {
     
     [HttpGet]
-    public async ValueTask<IActionResult> GetAllUsers(CancellationToken cancellationToken)
+    public async ValueTask<IActionResult> GetAllUsers(int pageNumber = 1, int pageSize = 10,
+        CancellationToken cancellationToken = default)
     {
-       var result = await userApplication.GetAllUsersAsync(cancellationToken);
-       return result.ToActionResult();
+        var request = new GetAllUsersRequest
+        {
+            PageNumber = pageNumber,
+            PageSize = pageSize
+        };
+        
+       var result = await userApplication.GetAllUsersAsync(request, cancellationToken);
+       
+       return result.ToActionPagedResult();
     }
     
     [HttpPost]
