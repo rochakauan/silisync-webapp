@@ -10,7 +10,7 @@ Log.Logger = new LoggerConfiguration()
     .WriteTo.Console()
     .CreateBootstrapLogger();
 
-return await AppStartupGuard.RunWithErrorHandlingAsync(async () =>
+return await AppStartupGuard.RunAfterValidatesAsync(async () =>
 {
     Log.Information("Attempting to initialize the application...");
     

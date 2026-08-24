@@ -6,7 +6,7 @@ namespace api.silisync;
 
 public static class AppStartupGuard
 {
-    public static async Task<int> RunWithErrorHandlingAsync(Func<Task<int>> startupAction)
+    public static async Task<int> RunAfterValidatesAsync(Func<Task<int>> startupAction)
     {
         try
         {
