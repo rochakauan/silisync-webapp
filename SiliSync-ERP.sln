@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "api.silisync", "api.silisync\api.silisync.csproj", "{8B71F0E4-783F-4AA8-B727-046256C6F1D7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "persistence.silisync", "persistence.silisync\persistence.silisync.csproj", "{18C3984E-2468-45E5-8CB4-F78FE00E22CA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "domain.silisync", "domain.silisync\domain.silisync.csproj", "{4BB0B225-9590-4F63-8568-A25623CA2AA4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "application.silisync", "application.silisync\application.silisync.csproj", "{56D6F9DE-7E22-461D-9C3B-9A6CD24B6316}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{8B71F0E4-783F-4AA8-B727-046256C6F1D7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8B71F0E4-783F-4AA8-B727-046256C6F1D7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8B71F0E4-783F-4AA8-B727-046256C6F1D7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8B71F0E4-783F-4AA8-B727-046256C6F1D7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{18C3984E-2468-45E5-8CB4-F78FE00E22CA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{18C3984E-2468-45E5-8CB4-F78FE00E22CA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{18C3984E-2468-45E5-8CB4-F78FE00E22CA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{18C3984E-2468-45E5-8CB4-F78FE00E22CA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4BB0B225-9590-4F63-8568-A25623CA2AA4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4BB0B225-9590-4F63-8568-A25623CA2AA4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4BB0B225-9590-4F63-8568-A25623CA2AA4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4BB0B225-9590-4F63-8568-A25623CA2AA4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{56D6F9DE-7E22-461D-9C3B-9A6CD24B6316}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{56D6F9DE-7E22-461D-9C3B-9A6CD24B6316}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{56D6F9DE-7E22-461D-9C3B-9A6CD24B6316}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{56D6F9DE-7E22-461D-9C3B-9A6CD24B6316}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
