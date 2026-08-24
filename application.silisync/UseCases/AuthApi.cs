@@ -36,7 +36,7 @@ public class AuthApi(UserManager<ApplicationUser> userManager) : IAuthApi
         // var domainUser = User.Create(publicId, model.Username);
         // TODO: persist domain user
         
-        return Result<Guid, AuthError>.Success(applicationUser.Id);
+        return Result<Guid, AuthError>.Success(applicationUser.Id, "User created successfully!");
     }
 
 }

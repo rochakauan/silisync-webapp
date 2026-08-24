@@ -21,7 +21,7 @@ public class Result<TError> where TError : ResultError
         Message = message;
     }
 
-    public static Result<TError> Success() => new(true, null);
+    public static Result<TError> Success(string? message = null) => new(true, null, message);
     public static Result<TError> Failure(TError error, string message) => new(false, error, message);
 }
 
@@ -31,11 +31,11 @@ public sealed class Result<T, TError> : Result<TError> where TError : ResultErro
 
     public T Value => IsSuccess
         ? _value!
-        : throw new InvalidOperationException("Cannot access Value from a failed result.");
+        : throw new InvalidOperationException("Cannot access 'Value' from a failed result.");
     
     private Result(bool iSuccess, T? value, TError? error, string? message = null)
         : base(iSuccess, error, message) => _value = value;
     
-    public static Result<T, TError> Success(T value) => new(true, value, null);
+    public static Result<T, TError> Success(T value, string? message = null) => new(true, value, null, message);
     public new static Result<T, TError> Failure(TError error, string message) => new(false, default, error, message);
 }

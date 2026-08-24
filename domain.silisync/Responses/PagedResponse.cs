@@ -25,7 +25,7 @@ public class PagedResponse<T> : Response<T>
     public int TotalPages => 
         (int)Math.Ceiling(TotalCount / (double)PageSize);
     
-    public static PagedResponse<T> Paged(T? data, int totalCount, int currentPage = 1, 
+    public static PagedResponse<T> Paged(T data, int totalCount, int currentPage = 1, 
         int pageSize = ResultsConfiguration.DefaultPageSize)
         => new(data, totalCount, currentPage, pageSize);
     

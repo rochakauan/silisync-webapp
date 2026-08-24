@@ -23,7 +23,7 @@ public sealed class Users(IUserApplication userApplication) : ControllerBase
         
        var result = await userApplication.GetAllUsersAsync(request, cancellationToken);
        
-       return result.ToActionPagedResult();
+       return result.ToActionResult();
     }
     
     [HttpPost]
