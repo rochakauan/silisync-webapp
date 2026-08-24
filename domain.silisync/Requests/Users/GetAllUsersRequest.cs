@@ -1,6 +1,5 @@
-﻿namespace domain.silisync.Requests.Users;
+﻿using domain.silisync.Abstractions;
 
-public class GetAllUsersRequest
-{
-    
-}
+namespace domain.silisync.Requests.Users;
+
+public sealed class GetAllUsersRequest : PagedRequest;
