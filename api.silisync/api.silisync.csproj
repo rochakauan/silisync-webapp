@@ -1,10 +1,11 @@
-<Project Sdk="Microsoft.NET.Sdk.Web">
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
     <PropertyGroup>
         <TargetFramework>net9.0</TargetFramework>
         <Nullable>enable</Nullable>
         <ImplicitUsings>enable</ImplicitUsings>
-    </PropertyGroup>
+      <UserSecretsId>bebf939d-84f2-4f4f-bad0-f2557f8b7b46</UserSecretsId>
+  </PropertyGroup>
     
     <ItemGroup>
         <Content Update="appsettings.*.json" CopyToOutputDirectory="Never" CopyToPublishDirectory="Never" />
@@ -13,7 +14,7 @@
     
     <ItemGroup>
         <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="9.0.18" />
-        <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="9.0.5"/>
+        <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="9.0.5" />
         <PackageReference Include="Microsoft.EntityFrameworkCore" Version="9.0.18" />
         <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="9.0.18" />
         <PackageReference Include="Scalar.AspNetCore" Version="2.16.18" />
