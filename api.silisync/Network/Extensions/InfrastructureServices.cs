@@ -9,10 +9,12 @@ public static class InfrastructureServices
 {
     public static void AddNetworkServices(this WebApplicationBuilder builder)
     {
-        builder.Configuration.SetBasePath(Directory.GetCurrentDirectory())
+        builder.Configuration
+            .SetBasePath(Directory.GetCurrentDirectory())
             .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
             .AddJsonFile($"appsettings.{builder.Environment.EnvironmentName}.json",
                 true, true)
+            .AddUserSecrets<Program>(optional: true)
             .AddEnvironmentVariables();
 
         builder.Services.AddSerilog((services, loggerConfiguration) => loggerConfiguration
