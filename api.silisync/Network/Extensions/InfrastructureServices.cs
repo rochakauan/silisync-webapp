@@ -1,5 +1,7 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿using System.Text;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.IdentityModel.Tokens;
 using Scalar.AspNetCore;
 using Serilog;
 
@@ -7,7 +9,7 @@ namespace api.silisync.Network.Extensions;
 
 public static class InfrastructureServices
 {
-    public static void AddNetworkServices(this WebApplicationBuilder builder)
+    public static void AddNetworkServices(this WebApplicationBuilder builder, IConfiguration configuration)
     {
         builder.Configuration
             .SetBasePath(Directory.GetCurrentDirectory())
@@ -21,7 +23,7 @@ public static class InfrastructureServices
             .ReadFrom.Configuration(builder.Configuration)
             .ReadFrom.Services(services));
 
-        SetupSiliSyncApi(builder);
+        SetupSiliSyncApi(builder, configuration);
 
         builder.Services.AddHttpClient("MercadoLibre", client => 
             { client.DefaultRequestHeaders.Add("Accept", "application/json"); });
@@ -41,17 +43,15 @@ public static class InfrastructureServices
         app.UseHttpsRedirection();
         app.UseAuthentication();
         app.UseAuthorization();
-        
         app.MapControllers();
     }
 
-    private static void SetupSiliSyncApi(WebApplicationBuilder builder)
+    private static void SetupSiliSyncApi(WebApplicationBuilder builder, IConfiguration configuration)
     {
         builder.Services.AddControllers();
         builder.Services.Configure<ApiBehaviorOptions>(options => { options.SuppressModelStateInvalidFilter = true; });
-
-        builder.Services.AddAuthentication(IdentityConstants.ApplicationScheme)
-            .AddIdentityCookies();
+        
+        SetupAuthentication(builder, configuration);
         builder.Services.AddAuthorization();
         builder.Services.AddCors();
     }
@@ -78,10 +78,31 @@ public static class InfrastructureServices
                 .WithDefaultHttpClient(ScalarTarget.CSharp, ScalarClient.HttpClient);
         });
     }
-
     private static void SetupCors(WebApplication app)
         => app.UseCors(x => x
             .AllowAnyHeader()
             .AllowAnyMethod()
             .WithOrigins("http://localhost:4200", "https://localhost:4200"));
+    
+    private static void SetupAuthentication(WebApplicationBuilder builder, IConfiguration configuration)
+    { 
+        var key = Encoding.ASCII.GetBytes(configuration.GetValue<string>("SSyncApi:JwtSecret")!);
+        builder.Services.AddAuthentication(options => 
+            {
+                options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+                options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+            })
+            .AddJwtBearer(options =>
+            {
+                options.RequireHttpsMetadata = false;
+                options.SaveToken = true;
+                options.TokenValidationParameters = new TokenValidationParameters
+                {
+                    ValidateIssuerSigningKey = true,
+                    IssuerSigningKey = new SymmetricSecurityKey(key),
+                    ValidateIssuer = false,
+                    ValidateAudience = false
+                }; 
+            });
+    }
 }

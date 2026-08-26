@@ -1,5 +1,6 @@
 ﻿using application.silisync.Interfaces.Application;
 using application.silisync.UseCases;
+using application.silisync.UseCases.Auth;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace application.silisync;

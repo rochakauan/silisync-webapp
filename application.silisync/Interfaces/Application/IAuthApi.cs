@@ -7,4 +7,5 @@ namespace application.silisync.Interfaces.Application;
 public interface IAuthApi
 {
     Task<Result<Guid, AuthError>> RegisterAsync(CreateUserRequest request);
+    Task<Result<string, AuthError>> LoginAsync(LoginRequest request);
 }

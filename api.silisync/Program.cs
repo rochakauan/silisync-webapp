@@ -16,7 +16,7 @@ return await AppStartupGuard.RunAfterValidatesAsync(async () =>
     
     var builder = WebApplication.CreateBuilder(args);
 
-    builder.AddNetworkServices();
+    builder.AddNetworkServices(builder.Configuration);
     
     builder.Services
         .AddSiliSyncApiOptions(builder.Configuration)

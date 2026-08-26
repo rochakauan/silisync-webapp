@@ -39,7 +39,7 @@ public static class OptionsExtensions
     {
         services.AddConfiguredOptions<SSyncApiOptions>(config, options =>
         {
-            options.Validate(o => !string.IsNullOrWhiteSpace(o.JwtKey),
+            options.Validate(o => !string.IsNullOrWhiteSpace(o.JwtSecret),
                 "JwtKey not set.");
         });
         
