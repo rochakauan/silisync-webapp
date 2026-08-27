@@ -15,12 +15,12 @@ return await AppStartupGuard.RunAfterValidatesAsync(async () =>
     Log.Information("Attempting to initialize the application...");
     
     var builder = WebApplication.CreateBuilder(args);
-
-    builder.AddNetworkServices(builder.Configuration);
     
     builder.Services
         .AddSiliSyncApiOptions(builder.Configuration)
         .AddMeliApiOptions(builder.Configuration);
+    
+    builder.AddNetworkServices(builder.Configuration);
     
     builder.Services.AddPersistence(builder.Configuration);
     builder.Services.AddApplication();

@@ -2,7 +2,6 @@
 using domain.silisync.Common.Results;
 using domain.silisync.Common.Results.Errors;
 using domain.silisync.Requests.Users;
-using domain.silisync.Responses;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Configuration;
 using persistence.silisync.Identity;
