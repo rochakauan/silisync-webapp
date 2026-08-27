@@ -55,12 +55,12 @@ public class UserApplication(UserManager<ApplicationUser> userManager) : IUserAp
         catch (Exception ex) when (ex.InnerException is SqlException)
         {
             return Result<PagedResponse<List<ApplicationUserResponseDto>>, ApplicationUsersError>
-                .Failure(ApplicationUsersError.SqlError(GenericErrorMessage), GenericErrorMessage);
+                .Failure(ApplicationUsersError.SqlError(GenericErrorMessage), ex.Message);
         }
-        catch (Exception)
+        catch (Exception ex)
         {
             return Result<PagedResponse<List<ApplicationUserResponseDto>>, ApplicationUsersError>
-                .Failure(ApplicationUsersError.UnexpectedError(GenericErrorMessage), GenericErrorMessage);
+                .Failure(ApplicationUsersError.UnexpectedError(GenericErrorMessage), ex.Message);
         }
     }
 }
