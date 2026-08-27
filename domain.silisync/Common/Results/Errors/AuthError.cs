@@ -9,10 +9,13 @@ public sealed class AuthError : ResultError
     
     public static AuthError EmailAlreadyInUse(string email)
         => new("AUTH_EMAIL_IN_USE", $"Email '{email}' is already in use.", EErrorCategory.Conflict);
-
-    public static AuthError InvalidCredentials()
-        => new("AUTH_INVALID_CREDENTIALS", "Invalid email or password", EErrorCategory.Unauthorized);
     
     public static AuthError Validation(IEnumerable<string> details)
-        => new("AUTH_VALIDATION", "Invalid field(s)", EErrorCategory.Validation, details);
+        => new("AUTH_VALIDATION", "Oops! We were almost there... Please correct it and try again", EErrorCategory.Validation, details);
+    
+    public static AuthError InvalidCredentials(string message)
+        => new("AUTH_IDENTITY_ERROR", message, EErrorCategory.Unauthorized);
+
+    public static AuthError UserTagGeneration(string message)
+        => new("AUTH_TAG_GENERATION", message, EErrorCategory.Unexpected);
 }
