@@ -47,6 +47,6 @@ public static class ResultExtensions
             message: error.Message,
             errors: error.Details);
         
-        return new ObjectResult(response);
+        return new ObjectResult(response) { StatusCode = statusCode };
     }
 }
