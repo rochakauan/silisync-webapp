@@ -33,8 +33,8 @@ public sealed class Result<T, TError> : Result<TError> where TError : ResultErro
         ? _value!
         : throw new InvalidOperationException("Cannot access 'Value' from a failed result.");
     
-    private Result(bool iSuccess, T? value, TError? error, string? message = null)
-        : base(iSuccess, error, message) => _value = value;
+    private Result(bool isSuccess, T? value, TError? error, string? message = null)
+        : base(isSuccess, error, message) => _value = value;
     
     public static Result<T, TError> Success(T value, string? message = null) => new(true, value, null, message);
     public new static Result<T, TError> Failure(TError error, string message) => new(false, default, error, message);

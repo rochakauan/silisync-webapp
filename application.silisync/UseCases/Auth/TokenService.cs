@@ -27,10 +27,8 @@ public static class TokenService
     }
 
     private static ClaimsIdentity GenerateClaims(ApplicationUser user)
-        => new(new[]
-        {
+        => new([
             new Claim(ClaimTypes.NameIdentifier, user.Id.ToString()),
-            new Claim(ClaimTypes.Email, user.Email!),
-
-        });
+            new Claim(ClaimTypes.Email, user.Email!)
+        ]);
 }
